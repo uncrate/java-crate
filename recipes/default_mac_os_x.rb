@@ -5,6 +5,7 @@ include_recipe "dmg"
 node['java']['jdk_versions'].each do |jdk_version|
   if jdk_version == '6'
     download_path = node['java']['jdk'][jdk_version]['mac_os_x']['url']
+    file_name = File.basename(download_path)
     file_name_no_extension = File.basename(download_path, ".*")
 
     dmg_package "JavaForOSX" do
@@ -14,6 +15,7 @@ node['java']['jdk_versions'].each do |jdk_version|
       source node['java']['jdk']['6']['mac_os_x']['url']
       owner node['uncrate']['user']
       action :install
+      not_if { ::File.exists?("#{Chef::Config['file_cache_path']}/#{file_name}")}
     end
   else
     if node['java']['oracle']['accept_oracle_download_terms']
