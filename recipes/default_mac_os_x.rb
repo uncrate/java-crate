@@ -19,7 +19,7 @@ node['java']['jdk_versions'].each do |jdk_version|
     end
   else
     if node['java']['oracle']['accept_oracle_download_terms']
-      cookie = "gpw_e24=http%3A%2F%2Fwww.oracle.com"
+      cookie = "oraclelicense=accept-securebackup-cookie"
       download_path = node['java']['jdk'][jdk_version]['mac_os_x']['url']
       file_name = File.basename(download_path)
       file_name_no_extension = File.basename(download_path, ".*")
