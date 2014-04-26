@@ -33,10 +33,10 @@ node['java']['jdk_versions'].each do |jdk_version|
 
       directory "#{ENV['HOME']}"
 
-      dmg_package "JDK 7 Update 45" do
+      dmg_package "JDK 7 Update 55" do
         dmg_name file_name_no_extension
         type 'pkg'
-        volumes_dir "JDK 7 Update 45"
+        volumes_dir "JDK 7 Update 55"
         action :install
       end
     else
